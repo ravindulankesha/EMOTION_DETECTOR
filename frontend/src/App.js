@@ -19,16 +19,24 @@ const App = () => {
   };
 
   return (
-      <div>
-
-        <button onClick={Navigate_To_EmotionPredictor}>Enter a custom input</button>
-        <button onClick={Navigate_To_MovieSearch}>Search for a Film and analyze</button>
-
+    <div>
+      <h1 className="heading">
+        TEXT EMOTION DETECTOR
+      </h1>
+      
+      <div className="main-container">
+        <div>
+          <button className="button" onClick={Navigate_To_EmotionPredictor}>DETECT EMOTION FOR A CUSTOM INPUT</button>
+        </div>
+        <div>
+          <button className="button" onClick={Navigate_To_MovieSearch}>SEARCH FOR A FILM AND ANALYZE REVIEWS</button>
+        </div>
+      </div>
         <Routes>
           <Route path="/EmotionPredictor" element={<EmotionPredictor/>} />
           <Route path="/MovieSearch" element={<MovieSearch/>} />
         </Routes>
-      </div>
+    </div>
   );
 };
 

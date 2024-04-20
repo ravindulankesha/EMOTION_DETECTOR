@@ -72,21 +72,32 @@ const MovieSearch = () => {
             let dataChart=new Chart(document.getElementById('sentimentChart'),{
                 type: 'doughnut',
                 data:{
-                labels: [
-                    'Positive',
-                    'Negative',
-                    'Neutral'
-                ],
-                datasets: [{
-                    label: 'Feedback',
-                    data: [positive,negative,neutral],
-                    backgroundColor: [
-                    'rgb(0, 255, 0)',
-                    'rgb(255, 0, 0)',
-                    'rgb(255, 255, 0)'
+                    labels: [
+                        'Positive',
+                        'Negative',
+                        'Neutral'
                     ],
-                    hoverOffset: 4
-                }]}
+                    datasets: [{
+                        label: 'Feedback',
+                        data: [positive,negative,neutral],
+                        backgroundColor: [
+                        'rgb(0, 255, 0)',
+                        'rgb(255, 0, 0)',
+                        'rgb(255, 255, 0)'
+                        ],
+                        hoverOffset: 4,
+                        borderWidth: 0
+                    }],
+                },
+                options: {
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'white'
+                            }
+                        }
+                    }
+                }
             });
     };
 
@@ -111,21 +122,26 @@ const MovieSearch = () => {
     };
 
     return (
-        <div className='main-Container'>
+        <div className='sub-Container'>
             <div>
-                <div>
-                    <textarea
-                        placeholder="search Movie..."
-                        value={searchText}
-                        onChange={(e) => setSearchText(e.target.value)}
-                    />
-                    <button onClick={handleMovieSearch}>Movie search</button>
+                <div className='search_box'>
+                    <div>
+                        <textarea
+                            className='textbar'
+                            placeholder="Search Film..."
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <button className="searchbtn" onClick={handleMovieSearch}>Search</button>
+                    </div>
                 </div>
                 <div id="chartContainer">
                     <canvas id="sentimentChart"></canvas>
                 </div>
-                <div>
-                    {viewClickedMovie} Viewers Feedback Summary:
+                <div className='searchResults'>
+                    {viewClickedMovie} Feedback Summary
                     {reviews.map((review) => (
                         <li key={review.reviewItem} onClick={() => handleReviewClick(review.reviewItem)}>
                             <strong>Viewer name:</strong> {review.name}<br />

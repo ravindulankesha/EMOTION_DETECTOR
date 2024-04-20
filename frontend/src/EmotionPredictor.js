@@ -26,24 +26,26 @@ const EmotionPredictor = () => {
     };
   
   return (
-    <div>
-      <textarea
-        placeholder="Enter your text..."
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-      />
-      <button onClick={handlePredict}>Predict Emotion</button>
-   
+    <div className='sub-Container'>
+      <div className='search_box'>
         <div>
-          <h2>Predicted Emotions:</h2>
-          <p>
-            {predictedEmotion}
-          
-          </p>
-         
+          <textarea
+            className='textbar'
+            placeholder="Enter your text..."
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+          />
         </div>
-    
-      
+        <div>
+          <button className="searchbtn" onClick={handlePredict}>Predict Emotion</button>
+        </div>
+      </div>
+      <div className='content'>
+        <b>Predicted Emotions:</b>
+        <p>
+          {predictedEmotion}
+        </p>
+      </div>     
     </div>
   );
 };
